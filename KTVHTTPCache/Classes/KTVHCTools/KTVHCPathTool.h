@@ -24,5 +24,7 @@
 + (NSError *)deleteDirectoryAtPath:(NSString *)path;
 
 + (long long)sizeAtPath:(NSString *)path;
++ (void) setCacheDirectoryURL:(NSURL *)URL;
+
 
 @end

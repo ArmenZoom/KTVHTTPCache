@@ -12,6 +12,7 @@
 #import "KTVHCDownload.h"
 #import "KTVHCURLTool.h"
 #import "KTVHCLog.h"
+#import "KTVHCPathTool.h"
 
 @implementation KTVHTTPCache
 
@@ -20,6 +21,11 @@
 + (BOOL)proxyStart:(NSError **)error
 {
     return [[KTVHCHTTPServer server] start:error];
+}
+
++ (void)setDiractionURL:(NSURL *)URL
+{
+    return [KTVHCPathTool setCacheDirectoryURL:URL];
 }
 
 + (void)proxyStop

@@ -11,11 +11,18 @@
 
 @implementation KTVHCPathTool
 
+static NSString *tmpRootDirectory = @"KTVHTTPCache";
+static NSString *tmpBasePath;
+
++ (void) setCacheDirectoryURL:(NSURL *)URL {
+    tmpRootDirectory = [URL lastPathComponent];
+    tmpBasePath = [[URL URLByDeletingLastPathComponent] path];
+}
+
 + (NSString *)rootDirectory
 {
-    static NSString *obj = @"KTVHTTPCache";
-    [self createDirectoryAtPath:obj];
-    return obj;
+    [self createDirectoryAtPath:tmpRootDirectory];
+    return tmpRootDirectory;
 }
 
 + (NSString *)logPath
@@ -66,6 +73,9 @@
 
 + (NSString *)basePath
 {
+    if (tmpBasePath) {
+        return tmpBasePath;
+    }
     return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
 }
 
