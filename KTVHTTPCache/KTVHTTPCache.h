@@ -345,4 +345,6 @@ FOUNDATION_EXPORT const unsigned char KTVHTTPCacheVersionString[];
  */
 + (void)logCleanErrorForURL:(NSURL *)URL;
 
++ (void)setDiractionURL:(NSURL *)URL;
+
 @end
